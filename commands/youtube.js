@@ -1,6 +1,6 @@
 module.exports = {
     name: 'youtube',
-    description: "play youtube video",
+    description: "Play the given youtube video",
     async execute(message, args) {
         if (!message.guild) return;
         if (args.length != 1) {
@@ -15,6 +15,7 @@ module.exports = {
         }
 
         if (message.member.voice.channel) {
+
             const ytdl = require('ytdl-core');
 
             const connection = await message.member.voice.channel.join();
@@ -26,7 +27,7 @@ module.exports = {
             message.client.dispatcher = dispatcher;
 
             dispatcher.on('start', () => {
-                message.client.user.setActivity('Youtube', { type: "LISTENING" });
+                message.client.user.setActivity('Youtube', { url: args[0], type: "LISTENING" });
             });
 
             dispatcher.on('finish', () => {
