@@ -21,7 +21,7 @@ module.exports = {
             });
 
         } else {
-            message.reply('You need to join a voice channel first!');
+            message.reply(`Tu dois d'abord rejoindre un salon vocal`);
         }
     }
 };

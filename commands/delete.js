@@ -12,6 +12,6 @@ module.exports = {
         }
 
         message.channel.bulkDelete(amount+1)
-            .then(messages => console.log(`${messages.size-1} messages deleted`));
+            .then(messages => console.log(`${messages.size-1} messages supprimés`));
     }
 };

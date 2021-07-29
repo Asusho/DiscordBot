@@ -9,6 +9,7 @@ module.exports = {
             const dispatcher = connection.play('./Medias/tip.mp3', {
                 volume: 0.5,
             });
+            message.client.dispatcher = dispatcher;
 
             dispatcher.on('start', () => {
                 message.client.user.setActivity('Tipping', { type: "CUSTOM_STATUS" });
@@ -18,10 +19,20 @@ module.exports = {
                 console.log('Finished playing!');
                 dispatcher.destroy(); // end the stream
                 message.member.voice.channel.leave();
+                message.client.dispatcher = null;
+                message.client.user.setActivity();
+            });
+
+            dispatcher.on('error', () => {
+                message.reply("Je n'ai pas reussi a tipper");
+                dispatcher.destroy(); // end the stream
+                message.member.voice.channel.leave();
+                message.client.dispatcher = null;
+                message.client.user.setActivity();
             });
 
         } else {
-            message.reply('You need to join a voice channel first!');
+            message.reply(`Tu dois d'abord rejoindre un salon vocal`);
         }
     }
 };
