@@ -3,6 +3,8 @@ module.exports = {
     description: "play medi entrance",
     async execute(voiceChannel, textChannel) {
 
+        console.log("welcomming medi");
+
         textChannel.send({
             files: [{
                 attachment: './Medias/Medi_Entrance_short2.gif',

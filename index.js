@@ -52,7 +52,7 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
                 let mediEvent = require(`./events/medi.js`);
                 client.channels.fetch('715594710156050515')
                     .then(textChannel => {
-                        mediEvent.execute(newMember.voiceChannel, textChannel);
+                        mediEvent.execute(newUserChannel, textChannel);
                     })
                     .catch(console.error);;
             } catch (error) {
