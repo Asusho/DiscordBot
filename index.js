@@ -35,7 +35,7 @@ client.on('message', message => {
 
 
 
-bot.on('voiceStateUpdate', (oldMember, newMember) => {
+client.on('voiceStateUpdate', (oldMember, newMember) => {
 
     let userName = newMember.member.user.username;
 
