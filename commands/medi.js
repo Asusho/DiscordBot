@@ -15,7 +15,7 @@ module.exports = {
                 message.client.user.setActivity('Tipping', { type: "CUSTOM_STATUS" });
                 message.channel.send({
                     files: [{
-                        attachment: 'Medi_Entrance_short2.gif',
+                        attachment: './Medias/Medi_Entrance_short2.gif',
                         name: 'Medi_Entrance.gif'
                     }]
                 })
