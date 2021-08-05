@@ -38,6 +38,7 @@ client.on('message', message => {
 client.on('voiceStateUpdate', (oldMember, newMember) => {
 
     let userName = newMember.member.user.username;
+    console.log(userName);
 
     if (userName == "IdemXD" || userName == "Asusho") {
         let newUserChannel = newMember.voiceChannel
