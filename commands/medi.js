@@ -5,6 +5,14 @@ module.exports = {
         if (!message.guild) return;
 
         if (message.member.voice.channel) {
+            message.channel.send({
+                files: [{
+                    attachment: './Medias/Medi_Entrance_short2.gif',
+                    name: 'Medi_Entrance.gif'
+                }]
+            });
+
+
             const connection = await message.member.voice.channel.join();
             const dispatcher = connection.play('./Medias/Medi_Entrance_short.mp3', {
                 volume: 0.5,
@@ -12,13 +20,7 @@ module.exports = {
             message.client.dispatcher = dispatcher;
 
             dispatcher.on('start', () => {
-                message.client.user.setActivity('Tipping', { type: "CUSTOM_STATUS" });
-                message.channel.send({
-                    files: [{
-                        attachment: './Medias/Medi_Entrance_short2.gif',
-                        name: 'Medi_Entrance.gif'
-                    }]
-                })
+                message.client.user.setActivity('Welcome Medi !', { type: "CUSTOM_STATUS" });
             });
 
             dispatcher.on('finish', () => {
@@ -30,7 +32,7 @@ module.exports = {
             });
 
             dispatcher.on('error', () => {
-                message.reply("Je n'ai pas reussi a tipper");
+                message.reply("J'ai pas reussi a bien accueillir Medi");
                 dispatcher.destroy(); // end the stream
                 message.member.voice.channel.leave();
                 message.client.dispatcher = null;

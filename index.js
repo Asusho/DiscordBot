@@ -23,15 +23,50 @@ client.on('message', message => {
     const args = message.content.slice(prefix.length).split(/ +/);
     const command = args.shift().toLowerCase();
 
-    if(!client.commands.has(command)) return;
+    if (!client.commands.has(command)) return;
 
     try {
-        client.commands.get(command).execute(message,args);
+        client.commands.get(command).execute(message, args);
     } catch (error) {
         console.error(error);
         message.reply("Une erreur s'est produite pendant l'execution de la commande");
     }
 });
+
+
+
+bot.on('voiceStateUpdate', (oldMember, newMember) => {
+
+    let userName = newMember.member.user.username;
+
+    if (userName == "IdemXD" || userName == "Asusho") {
+        let newUserChannel = newMember.voiceChannel
+        let oldUserChannel = oldMember.voiceChannel
+
+
+        if (oldUserChannel === undefined && newUserChannel !== undefined) {
+
+            // User Joins a voice channel
+            try {
+                let mediEvent = require(`./events/medi.js`);
+                client.channels.fetch('715594710156050515')
+                    .then(textChannel => {
+                        mediEvent.execute(newMember.voiceChannel, textChannel);
+                    })
+                    .catch(console.error);;
+            } catch (error) {
+                console.error(error);
+                message.reply("Une erreur s'est produite pendant l'execution de la commande");
+            }
+
+
+        } else if (newUserChannel === undefined) {
+
+            // User leaves a voice channel
+
+        }
+    }
+})
 
 
 client.login(token);
