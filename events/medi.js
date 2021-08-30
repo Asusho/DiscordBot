@@ -17,26 +17,20 @@ module.exports = {
         const dispatcher = connection.play('./Medias/Medi_Entrance_short.mp3', {
             volume: 0.5,
         });
-        message.client.dispatcher = dispatcher;
 
         dispatcher.on('start', () => {
-            message.client.user.setActivity('Welcome Medi !', { type: "CUSTOM_STATUS" });
         });
 
         dispatcher.on('finish', () => {
             console.log('Finished playing!');
             dispatcher.destroy(); // end the stream
-            message.member.voice.channel.leave();
-            message.client.dispatcher = null;
-            message.client.user.setActivity();
+            voiceChannel.leave();
         });
 
         dispatcher.on('error', () => {
             message.reply("J'ai pas reussi a bien accueillir Medi");
             dispatcher.destroy(); // end the stream
-            message.member.voice.channel.leave();
-            message.client.dispatcher = null;
-            message.client.user.setActivity();
+            voiceChannel.leave();
         });
     }
 };
