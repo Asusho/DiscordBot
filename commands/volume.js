@@ -11,10 +11,10 @@ module.exports = {
         }
 
         if (message.client.dispatcher) {
-            message.client.dispatcher.setVolume(args[0]/100);
+            message.client.volume = args[0];
+            message.client.dispatcher.setVolume(message.client.volume / 100);
             message.reply(`Volume à ${args[0]}%`);
-        }
-        else {
+        } else {
             message.reply(`Aucune musique n'est joué actuellement`);
         }
 

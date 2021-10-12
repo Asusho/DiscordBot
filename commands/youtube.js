@@ -18,16 +18,22 @@ module.exports = {
 
             const ytdl = require('ytdl-core');
 
+            let volume = message.client.volume / 100;
+            console.log(" volume " + volume);
+
             const connection = await message.member.voice.channel.join();
             const dispatcher = connection.play(ytdl(args[0], {
                 filter: 'audioonly',
-                volume: 0.5
+                volume: volume,
             }));
+
+            dispatcher.setVolume(volume);
 
             message.client.dispatcher = dispatcher;
 
             dispatcher.on('start', () => {
                 message.client.user.setActivity('Youtube', { url: args[0], type: "LISTENING" });
+                console.log("musique lancer avec le volume " + dispatcher.volume);
             });
 
             dispatcher.on('finish', () => {

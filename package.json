@@ -14,7 +14,7 @@
     "ffmpeg-static": "^4.4.0",
     "fs": "0.0.1-security",
     "opusscript": "0.0.8",
-    "ytdl-core": "^4.9.0",
+    "ytdl-core": "^4.9.1",
     "ytpl": "^2.2.1"
   }
 }

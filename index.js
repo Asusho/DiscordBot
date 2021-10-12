@@ -1,7 +1,7 @@
 const fs = require('fs');
 const Discord = require('discord.js');
 
-const { prefix, token } = require('./config.json');
+const { prefix, token, defaultVolume } = require('./config.json');
 
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
@@ -15,6 +15,7 @@ for (const file of commandFiles) {
 
 client.once('ready', () => {
     console.log("Ready!");
+    client.volume = defaultVolume;
 });
 
 client.on('message', message => {
@@ -46,7 +47,7 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
         // User Joins a voice channel
         console.log(userName + " joined " + newUserChannel.name);
 
-            if (userName == "IdemXD") {
+        if (userName == "IdemXD") {
 
             try {
                 let mediEvent = require(`./events/medi.js`);
