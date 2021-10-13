@@ -1,7 +1,7 @@
 const fs = require('fs');
 const Discord = require('discord.js');
 
-const { prefix, token, defaultVolume } = require('./config.json');
+const { prefix, defaultVolume } = require('./config.json');
 
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
@@ -71,4 +71,4 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
 })
 
 
-client.login(token);
+client.login(process.env.token);
