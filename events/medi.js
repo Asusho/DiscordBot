@@ -14,12 +14,14 @@ module.exports = {
 
 
         const connection = await voiceChannel.join();
-        const dispatcher = connection.play('./Medias/Medi_Entrance_short.mp3', {
+        // const dispatcher = connection.play('./Medias/Medi_Entrance_short.mp3', {
+        //     volume: 0.5,
+        // });
+        const dispatcher = connection.play('./Medias/pornhub-intro.mp3', {
             volume: 0.5,
         });
 
-        dispatcher.on('start', () => {
-        });
+        dispatcher.on('start', () => {});
 
         dispatcher.on('finish', () => {
             console.log('Finished playing!');
