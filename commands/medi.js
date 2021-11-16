@@ -14,7 +14,10 @@ module.exports = {
 
 
             const connection = await message.member.voice.channel.join();
-            const dispatcher = connection.play('./Medias/Medi_Entrance_short.mp3', {
+            // const dispatcher = connection.play('./Medias/Medi_Entrance_short.mp3', {
+            //     volume: 0.5,
+            // });
+            const dispatcher = connection.play('./Medias/pornhub-intro.mp3', {
                 volume: 0.5,
             });
             message.client.dispatcher = dispatcher;
